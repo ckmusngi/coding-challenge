@@ -1,8 +1,8 @@
 import axios from 'axios'
 import React, {useEffect, useState} from 'react'
 import Card from 'react-bootstrap/Card';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
+import Home from './components/pages/home/Index';
 
 function App() {
 
@@ -46,59 +46,64 @@ function App() {
   }
 
   return (
+      <div>
+        {
+          data ? <Home data={data}/> : 'test'
+        }
+      </div>
     
-    <div className='col d-flex justify-content-center mt-5 text-center'>
-      {
-        currentQuestion == 10 ? 
-        <div>
-            <p>You scored : {score}/10</p>
-        </div>
-         : 
-        <div>
-          <Card>
-            <Card.Body>
-              <Card.Title>
-                {
-                  click ? <h4>{ data[currentQuestion].category}</h4> : <h3>Welcome to the Trivia Challenge</h3>
-                }
-                </Card.Title>
-              {/* <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle> */}
-              <Card.Text className="m-5">
-                {
-                  click ? <h4>{data[currentQuestion].question}</h4> : <h3 >You will be presented with 10 True or False questions.</h3>
-                }
-              </Card.Text>
+    // <div className='col d-flex justify-content-center mt-5 text-center'>
+    //   {
+    //     currentQuestion == 10 ? 
+    //     <div>
+    //         <p>You scored : {score}/10</p>
+    //     </div>
+    //      : 
+    //     <div>
+    //       <Card>
+    //         <Card.Body>
+    //           <Card.Title>
+    //             {
+    //               click ? <h4>{ data[currentQuestion].category}</h4> : <h3>Welcome to the Trivia Challenge</h3>
+    //             }
+    //             </Card.Title>
+    //           {/* <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle> */}
+    //           <Card.Text className="m-5">
+    //             {
+    //               click ? <h4>{data[currentQuestion].question}</h4> : <h3 >You will be presented with 10 True or False questions.</h3>
+    //             }
+    //           </Card.Text>
 
-              {
-                click ? '' : 
-                <Card.Text className="m-5">
-                <h3>Can you score 100%?</h3>
-                </Card.Text>
-              }
-              {
-                click ? 
-                <Card.Text className="m-5">
-                  <p>{(currentQuestion + 1)}/10</p>
-                </Card.Text>
-                : '' 
+    //           {
+    //             click ? '' : 
+    //             <Card.Text className="m-5">
+    //             <h3>Can you score 100%?</h3>
+    //             </Card.Text>
+    //           }
+    //           {
+    //             click ? 
+    //             <Card.Text className="m-5">
+    //               <p>{(currentQuestion + 1)}/10</p>
+    //             </Card.Text>
+    //             : '' 
                 
-              }
-              {
-                click ?  
-                  <div>
-                    <Button variant="success" size="lg" active value="True" name="true-button" onClick={handleCheckAnswer}>True</Button> 
-                    <Button variant="danger" size="lg" active value="False" name="false-button" onClick={handleCheckAnswer}>False</Button> 
-                  </div> : 
-                <Button variant="primary" size="lg" active onClick={handleClick}>
-                  Primary button
-                </Button>
-              }
+    //           }
+    //           {
+    //             click ?  
+    //               <div>
+    //                 <Button variant="success" size="lg" active value="True" name="true-button" onClick={handleCheckAnswer}>True</Button> 
+    //                 <Button variant="danger" size="lg" active value="False" name="false-button" onClick={handleCheckAnswer}>False</Button> 
+    //               </div> : 
+    //             <Button variant="primary" size="lg" active onClick={handleClick}>
+    //               Primary button
+    //             </Button>
+    //           }
               
-            </Card.Body>
-          </Card>
-        </div>
-      }
-    </div>
+    //         </Card.Body>
+    //       </Card>
+    //     </div>
+    //   }
+    // </div>
   )
 }
 
