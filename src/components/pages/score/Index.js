@@ -3,38 +3,38 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Badge from 'react-bootstrap/Badge';
 import Card from 'react-bootstrap/Card';
 import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
+import '../../../App.css';
+import { VscCheck, VscClose } from "react-icons/vsc";
 
 function Score(props) {
   return (
     <>
-        <Card>
+        <Card id="card">
             <Card.Title>
-                <p>Your score is : {props.score}/10</p>
+                Your score is : {props.score}/10
             </Card.Title>
-            <Card.Body>
+            <Card.Body id="card-body">
             <Table striped bordered hover>
                 <tbody>
                     {
                         props.data.map((item, key) => 
                             <tr>
-                                <td key={key}>{item.question}</td>
+                                <td id="td" key={key}>{item.question} 
+                                    <span style={{float:'right'}}>{item.correct ? <VscCheck/> : <VscClose/>}</span></td>
                             </tr>
                         )
                     }
                     
                 </tbody>
                 </Table>
-                {/* <ListGroup>
-                {
-                    props.data.map((item, key) => 
-                        <ListGroup.Item key={key} className="text-left">
-                            {item.question} <Badge>{item.correct ? 'z' : 'x'}</Badge>
-                        </ListGroup.Item>
-                        
-                    )
-                }
-                </ListGroup> */}
+                <div className='d-grid gap-2'>
+                    <Button id="" variant="secondary" size="lg" onClick={() => {window.location.reload(false)}}>
+                        START
+                    </Button>
+                </div>
             </Card.Body>
+            
         </Card>
     </>
   )

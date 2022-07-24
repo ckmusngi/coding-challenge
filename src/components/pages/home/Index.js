@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios'
 import Question from '../question/Index';
 import { API_BASE_URL } from '../../../constant';
+import '../../../App.css'
 
 
 
@@ -24,7 +25,7 @@ function Home() {
             arrayResults.push({
                 category: result.category,
                 correct_answer: result.correct_answer,
-                question: result.question,
+                question: result.question.replace(/[^a-zA-Z ]/g, ""),
                 correct: false
             });
           });
@@ -40,8 +41,8 @@ function Home() {
         <div className='col d-flex justify-content-center mt-5 text-center rounded'>
             {
                 click ? <Question data={data}/>
-                : <Card style={{backgroundColor: '#f5eeee', borderRadius: '10px'}}>
-                    <Card.Body style={{boxShadow:'0 10px 20px 0 rgb(0 0 0 / 20%'}}>
+                : <Card id="card">
+                    <Card.Body id="card-body">
                         <Card.Title>
                             <h1>Welcome to the Trivia Challenge</h1>
                         </Card.Title>
@@ -52,9 +53,11 @@ function Home() {
                             <span style={{backgroundColor: '##c7bfbf', 
                                 fontWeight: '800', fontSize: '30px', borderRadius: '10px 2px'}}>Can you score 100%?</span>
                         </Card.Text>
-                        <Button variant="primary" size="lg" onClick={handleClick} disabled={data.length <= 0 ? true : false}>
-                            BEGIN
-                        </Button>
+                        <div className='d-grid gap-2'>
+                            <Button id="" variant="secondary" size="lg" onClick={handleClick} disabled={data.length <= 0 ? true : false}>
+                                START
+                            </Button>
+                        </div>
                     </Card.Body>
                 </Card>
             }

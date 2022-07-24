@@ -2,6 +2,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import React, {useEffect, useState} from 'react'
 import Score from '../score/Index';
+import '../../../App.css';
 
 
 
@@ -27,17 +28,17 @@ function Question(props) {
     <> 
         {
             currentQuestion === 10 ? <Score data={data} score={score}/> :
-            <Card>
-                <Card.Body>
+            <Card id="card">
+                <Card.Body id="card-body">
                     <Card.Title>
-                        <p>{props.data[currentQuestion].category}</p>
+                        <h2>{props.data[currentQuestion].category}</h2>
                     </Card.Title>
-                    <Card.Text className="m-5">
-                        <p>{props.data[currentQuestion].question}</p>
+                    <Card.Text className="m-5 align-middle text-wrap">
+                        {props.data[currentQuestion].question}
                     </Card.Text>
 
                     <Card.Text className="m-5">
-                        <p>{currentQuestion + 1}/10</p>
+                        <p style={{fontWeight: '700'}}>{currentQuestion + 1}/10</p>
                     </Card.Text>
                     <div>
                         <Button className='m-1' variant="success" size="lg" active value="True" name="true-button" onClick={handleCheckAnswer}>True</Button> 
